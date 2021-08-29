@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+		<title>Test</title>
+	</head>
+	<body>
+		<p id="place-for-array"></p>
+		<button id="add-button">ADD</button>
+	</body>
+
+	<script type="text/javascript">
+		var placeForArray=window.document.querySelector("#place-for-array");
+		var button=window.document.querySelector("#add-button");
+		var binary=[0,0,0,0,0,1,1,1];
+
+		placeForArray.innerHTML=binary;
+
+		function addOne(){
+			var initialPosition=binary.length -1;
+			var nextPosition=initialPosition;
+
+			function add(){
+				if(binary[nextPosition]==0){
+					binary[nextPosition]=1;
+					placeForArray.innerHTML=binary;
+
+					console.log(nextPosition)
+				}else{
+					binary[nextPosition]=0;
+					nextPosition=nextPosition-1;
+				
+					console.log(nextPosition)
+					add();
+
+				}
+
+			}
+			add()
+		}
+
+		button.addEventListener("click",addOne)
+	</script>
+</html>
